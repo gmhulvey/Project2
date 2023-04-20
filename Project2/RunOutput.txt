@@ -1,0 +1,34 @@
+CPU Frequency 1.8 GHz
+
+Run 0: Baseline
+
+
+Frame proc. time (ms): last 3.3189 (min 3.0241, avg. 3.1378, max 3.4369)
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.139 MB perf.data (3339 samples) ]
+
+Run 1: Inlining and Removing Y in Get_Pixel_yuv (Reducing Memory Traffic)
+
+Frame proc. time (ms): last 2.4556 (min 2.4196, avg. 2.4929, max 2.6456)
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.122 MB perf.data (2895 samples) ]
+
+Run 2: Hard-Code sep = 2 in find_chroma_matches (step through array sequentially and minimize data accesses)
+
+Frame proc. time (ms): last 2.2970 (min 2.2970, avg. 2.3668, max 2.5476)
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.119 MB perf.data (2807 samples) ]
+
+Run 3: sep=2 in Draw_Match_Marker Call in find_chroma_matches AND Comment out Set_Pixel_yuv y changes
+
+Frame proc. time (ms): last 2.2320 (min 2.1952, avg. 2.2336, max 2.3942)
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.105 MB perf.data (2457 samples) ]
+
+Run 4: Inline Set_Pixel_yuv
+
+Frame proc. time (ms): last 2.2048 (min 2.1834, avg. 2.2306, max 2.3315)
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.102 MB perf.data (2373 samples) ]
+
+
