@@ -1,6 +1,7 @@
 #include "yuv.h"
 #include <stdint.h>
 #include "is_options.h"
+#include "arm_neon.h"
 
 // #define BLANK_EDGES
 
@@ -52,6 +53,29 @@ int Sq_UV_Difference_yuv(YUV_T * c1, YUV_T * c2) {
   du = (int) c1->u - (int) c2->u;
   dv = (int) c1->v - (int) c2->v;
   return du*du + dv*dv;
+
+  // int32x2_t u1 = vld1_s32(&c1->u);
+  // int32x2_t u2 = vld1_s32(&c2->u);
+  // int32x2_t v1 = vld1_s32(&c1->v);
+  // int32x2_t v2 = vld1_s32(&c2->v);  
+
+  // int32x2_t du = vsub_s32(u1, u2);
+  // int32x2_t dv = vsub_s32(v1, v2);
+
+  // // int32x2_t du_squared = vmul_s32(du, dv);
+  // // int32x2_t dv_squared = vmul_s32(dv, dv);
+
+  // // int32x2_t sum = vadd_s32(du_squared, dv_squared);
+  
+  // // int result = vget_lane_s32(sum,0);
+
+  // // printf("result = %d\n",result);
+  // int u_ = vget_lane_s32(du, 0);
+  // int v_ = vget_lane_s32(dv, 0);
+  // int64_t du_square = u_*u_;
+  // int64_t dv_square = v_*v_;
+  
+  // return (int)(du_square+dv_square);
 }
 
 int Alt_UV_Difference_yuv(YUV_T * c1, YUV_T * c2){
