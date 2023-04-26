@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdio.h>
+#include "arm_neon.h"
 
 typedef struct {
   uint8_t y;
@@ -27,7 +28,7 @@ void Set_Pixel(YUV_IMAGE_T * i, int px, int py, uint8_t lum, uint8_t u, uint8_t 
 inline void Set_Pixel_yuv(YUV_IMAGE_T * i, int px, int py, YUV_T * yuv);
 inline void Get_Pixel_yuv(YUV_IMAGE_T * i, int px, int py, YUV_T * yuv);
 
-
+void print_float8x16(uint8x16_t vectorq);
 inline int Sq_UV_Difference_yuv(YUV_T * c1, YUV_T * c2);
 int Alt_UV_Difference_yuv(YUV_T * c1, YUV_T * c2);
 void Draw_Line(YUV_IMAGE_T * i, int p1X, int p1Y, int p2X, int p2Y, YUV_T * color);
