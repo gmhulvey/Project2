@@ -1,6 +1,6 @@
 # Select your CPU type
-# CPU = cortex-a72
-CPU = cortex-a53
+CPU = cortex-a72
+# CPU = cortex-a53
 
 CC = gcc
 UNROLL_CFLAGS = # -fno-unroll-loops
